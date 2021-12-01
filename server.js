@@ -51,14 +51,20 @@ app.patch("/app/update/user/:id", (req, res)=>{
 	}
 	const stmt = db.prepare("UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass) WHERE id = ?");
 	const name = stmt.run(data.user, md5(data.pass), data.id);
-	res.status(200).json({"message":'1 record updated: ID ${data.id} (200)'});
+	//res.status(200).json({"message":'1 record updated: ID ${data.id} (200)'});
 });
 
 // DELETE a single user (HTTP method DELETE) at endpoint /app/delete/user/:id
 //DELETE FROM userinfo WHERE id = ?
+app.get("/app/delete/user/:id", (req, res) => {
+	const stmt = db.prepare("SELECT * FROM userinfo WHERE id = ?");
+	const name = stmt.get(req.params.id);
+	res.status(200).json(name);
+	});
+	
 
 // Default response for any other request
-app.use(function(req, res){
-	res.json({"message":"Your API is working!"});
-    res.status(404);
-});
+//app.use(function(req, res){
+//	res.json({"message":"Your API is working!"});
+  //  res.status(404);
+//});
