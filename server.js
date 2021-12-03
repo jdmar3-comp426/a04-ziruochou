@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // Set server port
-const HTTP_PORT=5000
+var HTTP_PORT=5000
 
 // Start server
 app.listen(HTTP_PORT, () => {
