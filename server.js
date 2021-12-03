@@ -1,11 +1,11 @@
 // Define app using express
-var express = require("express")
-var app = express()
+var express = require("express");
+var app = express();
 // Require database SCRIPT file
-var db = require("./database.js")
+var db = require("./database.js");
 
 // Require md5 MODULE
-var md5 = require("md5")
+var md5 = require("md5");
 
 // Make Express use its own built-in body parser
 var bodyParser = require("body-parser");
@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Set server port
-var HTTP_PORT=5000;
+const HTTP_PORT=5000;
 
 // Start server
 app.listen(HTTP_PORT, () => {
