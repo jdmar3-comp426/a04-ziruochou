@@ -61,11 +61,11 @@ app.patch("/app/update/user/:id", (req, res)=>{
 app.delete("/app/delete/user/:id", (req, res) => {
 	const stmt = db.prepare("DELETE * FROM userinfo WHERE id = ?");
 	const out = stmt.get(req.params.id);
-	res.status(200).json({"message": out.changes + "1 record deleted: ID" + req.params.id + " (200)"});
+	res.status(200).json({"message": out.changes + " 1 record deleted: ID" + req.params.id + " (200)"});
 	})
 	
 // Default response for any other request
 app.use(function(req, res){
-	res.json({"message":"Your API works"});
+	res.json({"message":"Your API is working!"});
     res.status(404);
 })
