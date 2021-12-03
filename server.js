@@ -8,6 +8,7 @@ var db = require("./database.js")
 var md5 = require("md5")
 
 // Make Express use its own built-in body parser
+var bodyParser = require("body-parser");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
