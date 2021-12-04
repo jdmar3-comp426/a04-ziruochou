@@ -32,7 +32,7 @@ app.get("/app/", (req, res, next) => {
 app.post("/app/new/", (req, res) => {
 	const stmt = db.prepare("INSERT INTO userinfo (user, pass) VALUES (?, ?)");
 	const out = stmt.run(req.body.user, md5(req.body.pass));
-	res.status(201).json({"message": out.changes + " record created: ID" + out.lastInsertRowid + " (201)"});
+	res.status(201).json({"message": out.changes + " record created: ID " + out.lastInsertRowid + " (201)"});
 })
 //INSERT INTO userinfo (user, pass) VALUES (?, ?)
 
@@ -53,7 +53,7 @@ res.status(200).json(name);
 app.patch("/app/update/user/:id", (req, res)=>{
 	const stmt = db.prepare('UPDATE userinfo SET user = COALESCE(?,user) pass = COALESCE(?,pass) WHERE id = ?');
     const out = stmt.run(req.body.user, md5(req.body.pass), req.params.id);
-	res.status(200).json({"message": out.changes + " record updated: ID" + req.params.id + " (200)"});
+	res.status(200).json({"message": out.changes + " record updated: ID " + req.params.id + " (200)"});
 })
 
 // DELETE a single user (HTTP method DELETE) at endpoint /app/delete/user/:id
@@ -61,7 +61,7 @@ app.patch("/app/update/user/:id", (req, res)=>{
 app.delete("/app/delete/user/:id", (req, res) => {
 	const stmt = db.prepare("DELETE * FROM userinfo WHERE id = ?");
 	const out = stmt.get(req.params.id);
-	res.status(200).json({"message": out.changes + " record deleted: ID" + req.params.id + " (200)"});
+	res.status(200).json({"message": out.changes + " record deleted: ID " + req.params.id + " (200)"});
 	})
 	
 // Default response for any other request
