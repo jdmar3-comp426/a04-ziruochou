@@ -5,7 +5,7 @@ var app = express()
 // Require database SCRIPT file
 var db = require("./database.js")
 
-// Require md5 MODULE
+// Require md5 MODnpm run startULE
 var md5 = require("md5")
 
 // Make Express use its own built-in body parser
@@ -19,7 +19,7 @@ var HTTP_PORT=5000
 // Start server
 app.listen(HTTP_PORT, () => {
     console.log("Server running on port %PORT%".replace("%PORT%",HTTP_PORT))
-})
+});
 
 // READ (HTTP method GET) at root endpoint /app/
 app.get("/app/", (req, res, next) => {
